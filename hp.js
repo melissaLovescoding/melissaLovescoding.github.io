@@ -46,9 +46,8 @@ function restartVideo() {
     video.play();
 }
 
-// 生日愿望提交
+// 生日愿望提交 
 document.getElementById("submitWish").addEventListener("click", function() {
-    document.getElementById("submitWish").addEventListener("click", function() {
     var wishInput = document.getElementById("wishInput");
     var wishText = wishInput.value.trim();
     if (wishText !== "") {
@@ -58,7 +57,6 @@ document.getElementById("submitWish").addEventListener("click", function() {
     }
 });
 
-});
 // 从 LocalStorage 加载愿望
 window.onload = function() {
     loadWishes();
@@ -72,8 +70,10 @@ function addWishToWall(wishText) {
 
     // 创建删除按钮
     var deleteButton = document.createElement("button");
-    deleteButton.textContent = "删除";
+    deleteButton.textContent = "delete";
     deleteButton.style.marginLeft = "10px";
+    
+    // 为删除按钮添加点击事件
     deleteButton.onclick = function() {
         // 从页面上移除愿望
         document.getElementById("wishes").removeChild(wishDiv);
@@ -88,7 +88,6 @@ function addWishToWall(wishText) {
     document.getElementById("wishes").appendChild(wishDiv);
 }
 
-
 // 保存愿望到 LocalStorage
 function saveWish(wishText) {
     var wishes = JSON.parse(localStorage.getItem("wishes")) || [];
@@ -102,4 +101,14 @@ function loadWishes() {
     wishes.forEach(function(wishText) {
         addWishToWall(wishText);
     });
+}
+
+// 删除愿望并从LocalStorage中移除
+function deleteWish(wishText) {
+    // 从 LocalStorage 中删除愿望
+    var wishes = JSON.parse(localStorage.getItem("wishes")) || [];
+    var updatedWishes = wishes.filter(function(wish) {
+        return wish !== wishText; // 保留所有与 wishText 不匹配的愿望
+    });
+    localStorage.setItem("wishes", JSON.stringify(updatedWishes));
 }

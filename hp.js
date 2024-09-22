@@ -45,7 +45,7 @@ function restartVideo() {
     video.currentTime = 0;
     video.play();
 }
-
+const adminPassword = "090703";
 // 生日愿望提交 
 document.getElementById("submitWish").addEventListener("click", function() {
     var wishInput = document.getElementById("wishInput");
@@ -74,13 +74,20 @@ function addWishToWall(wishText) {
     deleteButton.style.marginLeft = "10px";
     
     // 为删除按钮添加点击事件
-    deleteButton.onclick = function() {
-        // 从页面上移除愿望
-        document.getElementById("wishes").removeChild(wishDiv);
-        // 从LocalStorage中删除愿望
-        deleteWish(wishText);
+   deleteButton.onclick = function() {
+		var enteredPassword = prompt("Please enter code to delete this wish：");
+		// 检查密码是否正确
+        if (enteredPassword === adminPassword) {
+            // 如果密码正确，允许删除愿望
+            document.getElementById("wishes").removeChild(wishDiv);
+            deleteWish(wishText); // 从LocalStorage中删除愿望
+            alert("this wish is deleted.");
+        } else {
+            // 密码错误，提示用户
+            alert("This code is wrong, you can't delete it!");
+        }
+       
     };
-
     // 将删除按钮添加到 wishDiv
     wishDiv.appendChild(deleteButton);
 

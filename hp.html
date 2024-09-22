@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <link rel="stylesheet" href="hp.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Dear Ana, Happy Birthday for you!</h1>
+        <p>Hope the twenties would be the best part of your life~</p>
+        <button id="surpriseButton">Click on me</button>
+        
+        <div id="surprise" class="hidden">
+            <!--change into video or 动图-->
+            <video id="birthdayVideo" width="600" controls>
+                <source src="happybirthday_meow.mp4" type="video/mp4">
+            </video>
+            <div class="controls">
+                <button onclick="playVideo()">Play</button>
+                <button onclick="pauseVideo()">Pause</button>
+                <button onclick="restartVideo()">Restart</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="balloons">
+        <!-- 将多个气球添加到页面中 -->
+        <div class="balloon" style="left: 10%; animation-delay: 0s;"></div>
+        <div class="balloon" style="left: 30%; animation-delay: 0.5s;"></div>
+        <div class="balloon" style="left: 50%; animation-delay: 1s;"></div>
+        <div class="balloon" style="left: 70%; animation-delay: 1.5s;"></div>
+        <div class="balloon" style="left: 90%; animation-delay: 2s;"></div>
+    </div>
+
+    <div id="wishesWall">
+        <h2>Wishes Wall</h2>
+        <textarea id="wishInput" placeholder="Put your wishes here..."></textarea>
+        <button id="submitWish">Submit Wish</button>
+        <div id="wishes"></div>
+    </div>
+
+    <canvas id="fireworksCanvas"></canvas>
+
+    <script src="hp.js"></script>
+
+</body>
+</html>

@@ -45,7 +45,7 @@ function restartVideo() {
     video.currentTime = 0;
     video.play();
 }
-const adminPassword = "090703";
+const adminPassword = "0112";
 // 生日愿望提交 
 document.getElementById("submitWish").addEventListener("click", function() {
     var wishInput = document.getElementById("wishInput");
